@@ -21,6 +21,11 @@ export default function Form() {
     })
   }
 
+  const isValidActivity = () => {
+    const {name, calories} = activity
+    return name.trim() !== '' && calories > 0
+  }
+
 
   return (
     <form
@@ -72,9 +77,10 @@ export default function Form() {
       <input
         type="submit"
         className=" bg-gray-800 hover:bg-gray-900 w-full p-2 font-bold uppercase text-white
-         cursor-pointer"
+         cursor-pointer disabled:opacity-10"
         value='Guardar'
         onChange={handelChange}
+        disabled={!isValidActivity()}
       />
         
 
