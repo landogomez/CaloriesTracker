@@ -10,6 +10,13 @@ export default function Form() {
     calories: 0
   })
 
+  const handelChange = (e) => {
+    setActivity({
+      ...activity,
+      [e.target.id]: e.target.value
+    })
+  }
+
 
   return (
     <form
@@ -21,6 +28,7 @@ export default function Form() {
           className="border border-slate-300 p-2 rounded-lg w-full bg-white"
           id="category"
           value={activity.category}
+          onChange={handelChange}
         > 
           {categories.map(category => (
             <option
@@ -41,6 +49,7 @@ export default function Form() {
           className="border border-slate-300 p-2 rounded-lg"
           placeholder="Comida. Ej: Jugo de Narnja, Ensalada, Ejercicio, Pesas, Bicicleta"
           value={activity.name}
+          onChange={handelChange}
           />
       </div>
 
@@ -52,6 +61,7 @@ export default function Form() {
           className="border border-slate-300 p-2 rounded-lg"
           placeholder="Calorías. Ej: 300 o 500"
           value={activity.calories}
+          onChange={handelChange}
         />
       </div>
 
@@ -59,7 +69,10 @@ export default function Form() {
         type="submit"
         className=" bg-gray-800 hover:bg-gray-900 w-full p-2 font-bold uppercase text-white
          cursor-pointer"
-        value='Guardar'/>
+        value='Guardar'
+        onChange={handelChange}
+      />
+        
 
     </form>
   )
